@@ -25,7 +25,7 @@ public class FormatNumberScriptlet extends JRDefaultScriptlet {
 
     public String formatNumber(Number number, String pattern) {
         if (number == null) {
-            return null;
+            number = 0;
         }
 
         Matcher matcher = NUMBER_PATTERN_EXPRESSION.matcher(pattern);
