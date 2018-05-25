@@ -4,7 +4,7 @@
 
     <groupId>io.github.carlosthe19916</groupId>
     <artifactId>jasper-utils</artifactId>
-    <version>1.0.0.Final</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>Jasper Utils</name>
     <description>Jasper Utils</description>
