@@ -8,6 +8,7 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -73,7 +74,7 @@ public class FormatNumberScriptlet extends JRDefaultScriptlet {
     }
 
     public String sum(List<BigDecimal> collection, String pattern) {
-        BigDecimal sum = collection.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal sum = collection.stream().filter(Objects::nonNull).reduce(BigDecimal.ZERO, BigDecimal::add);
         return formatNumber(sum, pattern);
     }
 
@@ -82,7 +83,7 @@ public class FormatNumberScriptlet extends JRDefaultScriptlet {
     }
 
     public String sum(String pattern, BigDecimal... number) {
-        BigDecimal result = Stream.of(number).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal result = Stream.of(number).filter(Objects::nonNull).reduce(BigDecimal.ZERO, BigDecimal::add);
         return formatNumber(result, pattern);
     }
 
@@ -91,7 +92,7 @@ public class FormatNumberScriptlet extends JRDefaultScriptlet {
     }
 
     public String sum(String pattern, List<BigDecimal> collection, BigDecimal... number) {
-        BigDecimal result = Stream.concat(collection.stream(), Stream.of(number)).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal result = Stream.concat(collection.stream(), Stream.of(number)).filter(Objects::nonNull).reduce(BigDecimal.ZERO, BigDecimal::add);
         return formatNumber(result, pattern);
     }
 

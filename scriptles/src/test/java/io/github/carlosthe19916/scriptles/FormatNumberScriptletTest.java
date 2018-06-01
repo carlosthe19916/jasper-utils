@@ -109,4 +109,15 @@ public class FormatNumberScriptletTest {
         sum = scriptlet.sum("USD", collection, new BigDecimal("900"), new BigDecimal("200"));
         Assert.assertEquals("USD2,200.00", sum);
     }
+
+    @Test
+    public void testSumNull() {
+        FormatNumberScriptlet scriptlet = new FormatNumberScriptlet();
+
+        List<BigDecimal> collection = new ArrayList<>();
+        collection.add(null);
+
+        String sum = scriptlet.sum(collection);
+        Assert.assertEquals("0.00", sum);
+    }
 }
