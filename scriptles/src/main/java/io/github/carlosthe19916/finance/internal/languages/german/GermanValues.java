@@ -4,18 +4,21 @@ import com.google.common.collect.ImmutableMap;
 import io.github.carlosthe19916.finance.internal.languages.GenderForms;
 import io.github.carlosthe19916.finance.internal.languages.GenderType;
 import io.github.carlosthe19916.finance.internal.languages.PluralForms;
-import io.github.carlosthe19916.finance.internal.support.BaseNumbersBuilder;
+import io.github.carlosthe19916.finance.internal.languages.RegularPluralForms;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static io.github.carlosthe19916.finance.internal.languages.GenderForms.genderForms;
+import static io.github.carlosthe19916.finance.internal.support.BaseNumbersBuilder.baseNumbersBuilder;
+
 public class GermanValues {
 
     public Map<Integer, GenderForms> baseNumbers() {
-        return BaseNumbersBuilder.baseNumbersBuilder()
+        return baseNumbersBuilder()
                 .put(0, "null")
-                .put(1, GenderForms.genderForms("ein", "eine", "ein", "ein"))
+                .put(1, genderForms("ein", "eine", "ein", "ein"))
                 .put(2, "zwei")
                 .put(3, "drei")
                 .put(4, "vier")
@@ -59,9 +62,9 @@ public class GermanValues {
     }
 
     public List<PluralForms> pluralForms() {
-        return Arrays.<PluralForms>asList(
-                new GermanPluralForms("Million", "Millionen", GenderType.FEMININE),
-                new GermanPluralForms("Milliarde", "Milliarden", GenderType.FEMININE));
+        return Arrays.asList(
+                new RegularPluralForms("Million", "Millionen", GenderType.FEMININE),
+                new RegularPluralForms("Milliarde", "Milliarden", GenderType.FEMININE));
     }
 
     public String currency() {

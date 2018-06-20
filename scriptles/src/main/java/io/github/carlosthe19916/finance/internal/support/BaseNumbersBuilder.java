@@ -9,7 +9,7 @@ import static io.github.carlosthe19916.finance.internal.languages.GenderForms.ge
 
 public class BaseNumbersBuilder {
 
-    private Map<Integer, GenderForms> result = new HashMap<>();
+    private final Map<Integer, GenderForms> result = new HashMap<>();
 
     public static BaseNumbersBuilder baseNumbersBuilder() {
         return new BaseNumbersBuilder();

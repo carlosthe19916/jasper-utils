@@ -1,20 +1,20 @@
-package io.github.carlosthe19916.finance.internal.languages.german;
+package io.github.carlosthe19916.finance.internal.languages.spanish;
 
-import io.github.carlosthe19916.finance.internal.GenderAwareIntegerToStringConverter;
 import io.github.carlosthe19916.finance.internal.IntegerToStringConverter;
+import io.github.carlosthe19916.finance.internal.MultiFormNumber;
 import io.github.carlosthe19916.finance.internal.NumberProcessor;
 
 import java.util.Map;
 
-public class GermanIntegerToWordsConverter implements IntegerToStringConverter {
+public class SpanishIntegerToWordsConverter implements IntegerToStringConverter {
 
     private final IntegerToStringConverter bigNumbersConverter;
-    private final Map<Integer, String> exceptions;
-    private final GenderAwareIntegerToStringConverter smallNumbersConverter;
+    private final Map<Integer, MultiFormNumber> exceptions;
+    private final IntegerToStringConverter smallNumbersConverter;
 
-    public GermanIntegerToWordsConverter(IntegerToStringConverter bigNumbersConverter,
-                                         Map<Integer, String> exceptions,
-                                         GenderAwareIntegerToStringConverter smallNumbersConverter) {
+    public SpanishIntegerToWordsConverter(IntegerToStringConverter bigNumbersConverter,
+                                          Map<Integer, MultiFormNumber> exceptions,
+                                          IntegerToStringConverter smallNumbersConverter) {
         this.bigNumbersConverter = bigNumbersConverter;
         this.exceptions = exceptions;
         this.smallNumbersConverter = smallNumbersConverter;
@@ -23,7 +23,7 @@ public class GermanIntegerToWordsConverter implements IntegerToStringConverter {
     @Override
     public String asWords(Integer value) {
         if (exceptions.containsKey(value)) {
-            return exceptions.get(value);
+            return exceptions.get(value).getAloneForm();
         }
 
         Integer bigNumber = value / 1000000;
@@ -31,5 +31,4 @@ public class GermanIntegerToWordsConverter implements IntegerToStringConverter {
 
         return new NumberProcessor(bigNumbersConverter, smallNumbersConverter).process(bigNumber, smallNumber);
     }
-
 }

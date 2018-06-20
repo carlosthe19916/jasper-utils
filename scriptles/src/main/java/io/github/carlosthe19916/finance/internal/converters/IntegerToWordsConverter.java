@@ -3,6 +3,7 @@ package io.github.carlosthe19916.finance.internal.converters;
 import com.google.common.base.Joiner;
 import io.github.carlosthe19916.finance.internal.GenderAwareIntegerToStringConverter;
 import io.github.carlosthe19916.finance.internal.IntegerToStringConverter;
+import io.github.carlosthe19916.finance.internal.ToStringConverter;
 import io.github.carlosthe19916.finance.internal.languages.PluralForms;
 import io.github.carlosthe19916.finance.internal.support.NumberChunking;
 
@@ -17,12 +18,18 @@ public class IntegerToWordsConverter implements IntegerToStringConverter {
 
     private final NumberChunking numberChunking = new NumberChunking();
 
-    private final GenderAwareIntegerToStringConverter hundredsToWordsConverter;
+    protected final GenderAwareIntegerToStringConverter hundredsToWordsConverter;
     private final List<PluralForms> pluralForms;
 
     public IntegerToWordsConverter(GenderAwareIntegerToStringConverter hundredsToWordsConverter,
                                    List<PluralForms> pluralForms) {
         this.hundredsToWordsConverter = hundredsToWordsConverter;
+        this.pluralForms = pluralForms;
+    }
+
+    public IntegerToWordsConverter(final IntegerToStringConverter hundredsToWordsConverter,
+            List<PluralForms> pluralForms) {
+        this.hundredsToWordsConverter = ToStringConverter.toGenderAwareInteger(hundredsToWordsConverter);
         this.pluralForms = pluralForms;
     }
 
@@ -36,7 +43,7 @@ public class IntegerToWordsConverter implements IntegerToStringConverter {
         return joinValueChunksWithForms(valueChunks.iterator(), formsToUse.iterator());
     }
 
-    private String joinValueChunksWithForms(Iterator<Integer> chunks, Iterator<PluralForms> formsToUse) {
+    protected String joinValueChunksWithForms(Iterator<Integer> chunks, Iterator<PluralForms> formsToUse) {
         List<String> result = new ArrayList<>();
 
         while (chunks.hasNext() && formsToUse.hasNext()) {
@@ -52,7 +59,7 @@ public class IntegerToWordsConverter implements IntegerToStringConverter {
         return joinParts(result);
     }
 
-    private String joinParts(List<String> result) {
+    protected String joinParts(List<String> result) {
         if (result.size() == 0) {
             return hundredsToWordsConverter.asWords(0, pluralForms.get(0).genderType());
         }

@@ -1,19 +1,20 @@
-package io.github.carlosthe19916.finance.internal.languages.czech;
+package io.github.carlosthe19916.finance.internal.languages.slovak;
 
 import io.github.carlosthe19916.finance.internal.BaseValues;
 import io.github.carlosthe19916.finance.internal.languages.GenderForms;
 import io.github.carlosthe19916.finance.internal.languages.GenderType;
 import io.github.carlosthe19916.finance.internal.languages.PluralForms;
+import io.github.carlosthe19916.finance.internal.languages.czech.CzechPluralForms;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Collections.singletonList;
 import static io.github.carlosthe19916.finance.internal.languages.GenderForms.genderForm;
 
-public class CzechValuesForSmallNumbers implements BaseValues {
+public class SlovakValuesForSmallNumbers implements BaseValues {
 
-    private final CzechValues originalValues = new CzechValues();
+    private final SlovakValues originalValues = new SlovakValues();
 
     @Override
     public Map<Integer, GenderForms> baseNumbers() {
@@ -25,7 +26,7 @@ public class CzechValuesForSmallNumbers implements BaseValues {
 
     @Override
     public List<PluralForms> pluralForms() {
-        return Arrays.asList(new CzechPluralForms());
+        return singletonList(new CzechPluralForms());
     }
 
     @Override

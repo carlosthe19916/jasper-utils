@@ -12,9 +12,9 @@ import static java.lang.String.format;
 public class HundredsToWordsConverter implements GenderAwareIntegerToStringConverter {
 
     private final Map<Integer, GenderForms> baseValues;
-    private String twoDigitsNumberSeparator;
+    private final char twoDigitsNumberSeparator;
 
-    public HundredsToWordsConverter(Map<Integer, GenderForms> baseValues, String twoDigitsNumberSeparator) {
+    public HundredsToWordsConverter(Map<Integer, GenderForms> baseValues, char twoDigitsNumberSeparator) {
         this.baseValues = baseValues;
         this.twoDigitsNumberSeparator = twoDigitsNumberSeparator;
     }
@@ -35,7 +35,7 @@ public class HundredsToWordsConverter implements GenderAwareIntegerToStringConve
     private String twoDigitsNumberAsString(Integer value, GenderType genderType) {
         Integer units = value % 10;
         Integer tens = value - units;
-        return format("%s%s%s", asWords(tens, genderType), twoDigitsNumberSeparator, asWords(units, genderType));
+        return format("%s%c%s", asWords(tens, genderType), twoDigitsNumberSeparator, asWords(units, genderType));
     }
 
     private String threeDigitsNumberAsString(Integer value, GenderType genderType) {

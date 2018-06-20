@@ -4,17 +4,18 @@ import io.github.carlosthe19916.finance.internal.BaseValues;
 import io.github.carlosthe19916.finance.internal.languages.GenderForms;
 import io.github.carlosthe19916.finance.internal.languages.PluralForms;
 import io.github.carlosthe19916.finance.internal.languages.SlavonicPluralForms;
-import io.github.carlosthe19916.finance.internal.support.BaseNumbersBuilder;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static io.github.carlosthe19916.finance.internal.support.BaseNumbersBuilder.baseNumbersBuilder;
+
 public class PolishValues implements BaseValues {
 
     @Override
     public Map<Integer, GenderForms> baseNumbers() {
-        return BaseNumbersBuilder.baseNumbersBuilder()
+        return baseNumbersBuilder()
                 .put(0, "zero")
                 .put(1, "jeden")
                 .put(2, "dwa")
@@ -57,7 +58,7 @@ public class PolishValues implements BaseValues {
 
     @Override
     public List<PluralForms> pluralForms() {
-        return Arrays.<PluralForms>asList(
+        return Arrays.asList(
                 new SlavonicPluralForms("", "", ""),
                 new SlavonicPluralForms("tysiąc", "tysiące", "tysięcy"),
                 new SlavonicPluralForms("milion", "miliony", "milionów"),
@@ -65,12 +66,12 @@ public class PolishValues implements BaseValues {
     }
 
     @Override
-    public String connector() {
+    public String currency() {
         return "PLN";
     }
 
     @Override
-    public String twoDigitsNumberSeparator() {
-        return " ";
+    public char twoDigitsNumberSeparator() {
+        return ' ';
     }
 }

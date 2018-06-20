@@ -4,7 +4,6 @@ import io.github.carlosthe19916.finance.internal.BaseValues;
 import io.github.carlosthe19916.finance.internal.languages.GenderForms;
 import io.github.carlosthe19916.finance.internal.languages.GenderType;
 import io.github.carlosthe19916.finance.internal.languages.PluralForms;
-import io.github.carlosthe19916.finance.internal.languages.SlavonicPluralForms;
 
 import java.util.Arrays;
 import java.util.List;
@@ -60,20 +59,20 @@ public class RussianValues implements BaseValues {
 
     @Override
     public List<PluralForms> pluralForms() {
-        return Arrays.<PluralForms>asList(
-                new SlavonicPluralForms("", "", "", GenderType.MASCULINE),
-                new SlavonicPluralForms("тысяча", "тысячи", "тысяч", GenderType.FEMININE),
-                new SlavonicPluralForms("миллион", "миллиона", "миллионов", GenderType.MASCULINE),
-                new SlavonicPluralForms("миллиард", "миллиарда", "миллиардов", GenderType.MASCULINE));
+        return Arrays.asList(
+                new RussianPluralForms("", "", "", GenderType.MASCULINE),
+                new RussianPluralForms("тысяча", "тысячи", "тысяч", GenderType.FEMININE),
+                new RussianPluralForms("миллион", "миллиона", "миллионов", GenderType.MASCULINE),
+                new RussianPluralForms("миллиард", "миллиарда", "миллиардов", GenderType.MASCULINE));
     }
 
     @Override
-    public String connector() {
+    public String currency() {
         return "руб.";
     }
 
     @Override
-    public String twoDigitsNumberSeparator() {
-        return " ";
+    public char twoDigitsNumberSeparator() {
+        return ' ';
     }
 }

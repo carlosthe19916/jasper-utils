@@ -12,7 +12,7 @@ public interface BaseValues {
 
     List<PluralForms> pluralForms();
 
-    String connector();
+    String currency();
 
-    String twoDigitsNumberSeparator();
+    char twoDigitsNumberSeparator();
 }

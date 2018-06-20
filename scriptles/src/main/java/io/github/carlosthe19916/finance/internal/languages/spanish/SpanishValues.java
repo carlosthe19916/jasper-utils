@@ -1,21 +1,39 @@
+/*******************************************************************************
+ * Copyright 2016 Sistcoop, Inc. and/or its affiliates
+ * and other contributors as indicated by the @author tags.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 package io.github.carlosthe19916.finance.internal.languages.spanish;
 
-import io.github.carlosthe19916.finance.internal.BaseValues;
+import com.google.common.collect.ImmutableMap;
+import io.github.carlosthe19916.finance.internal.MultiFormNumber;
 import io.github.carlosthe19916.finance.internal.languages.GenderForms;
 import io.github.carlosthe19916.finance.internal.languages.PluralForms;
-import io.github.carlosthe19916.finance.internal.support.BaseNumbersBuilder;
+import io.github.carlosthe19916.finance.internal.languages.RegularPluralForms;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class SpanishValues implements BaseValues {
+import static io.github.carlosthe19916.finance.internal.support.BaseNumbersBuilder.baseNumbersBuilder;
 
-    @Override
+public class SpanishValues {
+
     public Map<Integer, GenderForms> baseNumbers() {
-        return BaseNumbersBuilder.baseNumbersBuilder()
-                .put(0, "")
-                .put(1, GenderForms.genderForms("un", "una", "un", "un"))
+        return baseNumbersBuilder()
+                .put(0, "cero")
+                .put(1, "uno")
                 .put(2, "dos")
                 .put(3, "tres")
                 .put(4, "cuatro")
@@ -30,17 +48,17 @@ public class SpanishValues implements BaseValues {
                 .put(13, "trece")
                 .put(14, "catorce")
                 .put(15, "quince")
-                .put(16, "dieciseis")
+                .put(16, "dieciséis")
                 .put(17, "diecisiete")
                 .put(18, "dieciocho")
                 .put(19, "diecinueve")
                 .put(20, "veinte")
                 .put(21, "veintiuno")
-                .put(22, "veintidos")
-                .put(23, "veintitres")
+                .put(22, "veintidós")
+                .put(23, "veintitrés")
                 .put(24, "veinticuatro")
                 .put(25, "veinticinco")
-                .put(26, "veintiseis")
+                .put(26, "veintiséis")
                 .put(27, "veintisiete")
                 .put(28, "veintiocho")
                 .put(29, "veintinueve")
@@ -51,34 +69,31 @@ public class SpanishValues implements BaseValues {
                 .put(70, "setenta")
                 .put(80, "ochenta")
                 .put(90, "noventa")
-                .put(100, "ciento")
                 .put(200, "doscientos")
-                .put(300, "trecientos")
+                .put(300, "trescientos")
                 .put(400, "cuatrocientos")
                 .put(500, "quinientos")
                 .put(600, "seiscientos")
                 .put(700, "setecientos")
                 .put(800, "ochocientos")
                 .put(900, "novecientos")
+                .put(1000000, "un millón")
                 .build();
     }
 
-    @Override
-    public List<PluralForms> pluralForms() {
-        return Arrays.<PluralForms>asList(
-                new SpanishPluralForms(""),
-                new SpanishPluralForms("mil"),
-                new SpanishPluralForms("millones"),
-                new SpanishPluralForms("billones"));
+    public Map<Integer, MultiFormNumber> exceptions() {
+        return ImmutableMap.<Integer, MultiFormNumber>builder()
+                .put(100, new MultiFormNumber("cien", "ciento"))
+                .build();
     }
 
-    @Override
-    public String connector() {
+    public List<PluralForms> pluralForms() {
+        return Arrays.asList(
+                new RegularPluralForms("millón", "millones"));
+    }
+
+    public String currency() {
         return "y";
     }
 
-    @Override
-    public String twoDigitsNumberSeparator() {
-        return " y ";
-    }
 }

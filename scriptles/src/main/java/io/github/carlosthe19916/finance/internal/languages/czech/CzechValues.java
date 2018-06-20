@@ -5,19 +5,19 @@ import io.github.carlosthe19916.finance.internal.BaseValues;
 import io.github.carlosthe19916.finance.internal.languages.GenderForms;
 import io.github.carlosthe19916.finance.internal.languages.GenderType;
 import io.github.carlosthe19916.finance.internal.languages.PluralForms;
-import io.github.carlosthe19916.finance.internal.support.BaseNumbersBuilder;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import static io.github.carlosthe19916.finance.internal.languages.GenderForms.genderForms;
+import static io.github.carlosthe19916.finance.internal.support.BaseNumbersBuilder.baseNumbersBuilder;
 
 public class CzechValues implements BaseValues {
 
     @Override
     public Map<Integer, GenderForms> baseNumbers() {
-        return BaseNumbersBuilder.baseNumbersBuilder()
+        return baseNumbersBuilder()
                 .put(0, "nula")
                 .put(1, genderForms("jeden", "jedna", "jedno"))
                 .put(2, genderForms("dva", "dvě", "dvě"))
@@ -60,20 +60,20 @@ public class CzechValues implements BaseValues {
 
     @Override
     public List<PluralForms> pluralForms() {
-        return Arrays.<PluralForms>asList(
+        return Arrays.asList(
                 new CzechPluralForms("tisíc", "tisíce", "tisíc", GenderType.MASCULINE),
                 new CzechPluralForms("milion", "miliony", "milionů", GenderType.MASCULINE),
                 new CzechPluralForms("miliarda", "miliardy", "miliard", GenderType.FEMININE));
     }
 
     @Override
-    public String connector() {
+    public String currency() {
         return "Kč";
     }
 
     @Override
-    public String twoDigitsNumberSeparator() {
-        return " ";
+    public char twoDigitsNumberSeparator() {
+        return ' ';
     }
 
     public Map<Integer, String> exceptions() {

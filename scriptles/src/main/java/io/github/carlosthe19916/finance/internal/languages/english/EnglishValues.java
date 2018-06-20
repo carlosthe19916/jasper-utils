@@ -3,17 +3,18 @@ package io.github.carlosthe19916.finance.internal.languages.english;
 import io.github.carlosthe19916.finance.internal.BaseValues;
 import io.github.carlosthe19916.finance.internal.languages.GenderForms;
 import io.github.carlosthe19916.finance.internal.languages.PluralForms;
-import io.github.carlosthe19916.finance.internal.support.BaseNumbersBuilder;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static io.github.carlosthe19916.finance.internal.support.BaseNumbersBuilder.baseNumbersBuilder;
+
 public class EnglishValues implements BaseValues {
 
     @Override
     public Map<Integer, GenderForms> baseNumbers() {
-        return BaseNumbersBuilder.baseNumbersBuilder()
+        return baseNumbersBuilder()
                 .put(0, "zero")
                 .put(1, "one")
                 .put(2, "two")
@@ -56,7 +57,7 @@ public class EnglishValues implements BaseValues {
 
     @Override
     public List<PluralForms> pluralForms() {
-        return Arrays.<PluralForms>asList(
+        return Arrays.asList(
                 new EnglishPluralForms(""),
                 new EnglishPluralForms("thousand"),
                 new EnglishPluralForms("million"),
@@ -64,12 +65,12 @@ public class EnglishValues implements BaseValues {
     }
 
     @Override
-    public String connector() {
-        return "and";
+    public String currency() {
+        return "£";
     }
 
     @Override
-    public String twoDigitsNumberSeparator() {
-        return "-";
+    public char twoDigitsNumberSeparator() {
+        return '-';
     }
 }
