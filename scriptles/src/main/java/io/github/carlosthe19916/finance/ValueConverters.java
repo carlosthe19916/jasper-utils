@@ -16,20 +16,10 @@
  *******************************************************************************/
 package io.github.carlosthe19916.finance;
 
-import io.github.carlosthe19916.finance.internal.Container;
 import io.github.carlosthe19916.finance.internal.IntegerToStringConverter;
 
 import static com.google.common.base.Verify.verifyNotNull;
-import static io.github.carlosthe19916.finance.internal.Container.brazilianPortugueseContainer;
-import static io.github.carlosthe19916.finance.internal.Container.czechContainer;
-import static io.github.carlosthe19916.finance.internal.Container.englishContainer;
-import static io.github.carlosthe19916.finance.internal.Container.germanContainer;
-import static io.github.carlosthe19916.finance.internal.Container.polishContainer;
-import static io.github.carlosthe19916.finance.internal.Container.russianContainer;
-import static io.github.carlosthe19916.finance.internal.Container.slovakContainer;
-import static io.github.carlosthe19916.finance.internal.Container.latvianContainer;
-import static io.github.carlosthe19916.finance.internal.Container.kazakhContainer;
-import static io.github.carlosthe19916.finance.internal.Container.spanishContainer;
+import static io.github.carlosthe19916.finance.internal.Container.*;
 
 public enum ValueConverters {
 

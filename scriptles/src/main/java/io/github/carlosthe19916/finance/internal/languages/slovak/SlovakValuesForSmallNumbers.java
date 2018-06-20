@@ -9,8 +9,8 @@ import io.github.carlosthe19916.finance.internal.languages.czech.CzechPluralForm
 import java.util.List;
 import java.util.Map;
 
-import static java.util.Collections.singletonList;
 import static io.github.carlosthe19916.finance.internal.languages.GenderForms.genderForm;
+import static java.util.Collections.singletonList;
 
 public class SlovakValuesForSmallNumbers implements BaseValues {
 
